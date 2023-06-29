@@ -33,5 +33,21 @@ class Candidato extends CI_Model
     }
 
   }
-}
+
+  function obtenerPorId($id_can) {
+      $this->db->where("id_can", $id_can);
+      $candidato = $this->db->get("candidato");
+      if ($candidato->num_rows() > 0) {
+          return $candidato->row();
+      } else { // no hay datos
+          return false;
+      }
+      }
+
+      // función para actualizar un instructor
+      function actualizar($id_can, $datos) {
+          $this->db->where("id_can", $id_can);
+          return $this->db->update('candidato', $datos);
+      }
+}//CIERRE DE LA CLASE
  ?>

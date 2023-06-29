@@ -61,6 +61,12 @@
         }
 
      }
+     public function editar($id_can){
+      $data["candidatoEditar"]=$this->Candidato->obtenerPorId($id_can);
+      $this->load->view('header');
+      $this->load->view('candidatos/editar',$data);
+      $this->load->view('footer');
+    }
      //FUNCION PARA ELIMINAR CONSTRUCTORES
      public function eliminar($id_can){
        if ($this->Candidato->borrar($id_can)){
@@ -70,6 +76,22 @@
          echo "ERROR AL BORRAR :/";
        }
      }
+
+     //ACTUALIZAR
+      public function procesarActualizacion() {
+        $datosEditados = array(
+          "dignidad_can"=>$this->input->post('dignidad_can'),"apellido_can"=>$this->input->post('apellido_can'),
+          "nombre_can"=>$this->input->post('nombre_can'),"edad_can"=>$this->input->post('edad_can'),"movimiento_can"=> $this->input->post('movimiento_can'),
+          "titulo_can"=>$this->input->post('titulo_can'),"latitud_can"=>$this->input->post('latitud_can'),"longitud_can"=>$this->input->post('longitud_can'),
+          "tipo_can"=>$this->input->post('tipo_can')
+        );
+        $id_can =$this->input->post('id_can');
+        if ($this->Candidato->actualizar($id_can, $datosEditados)) {
+          redirect("candidatos/index");
+        } else {
+          echo "ERROR AL ACTUALIZAR :(";
+        }
+      }
 
         }//cierre de la clases NOOOOOOOOOOO BORRRAARRRR
 

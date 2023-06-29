@@ -71,12 +71,12 @@
             <?php echo $filaTemporal->tipo_can; ?>
           </td>
           <td style="border-color:black" class="text-center">
-            <a href="#" title="Editar Candidato">
-              <i class="glyphicon glyphicon-pencil"></i>
+            <a href="<?php echo site_url('/candidatos/editar/'); ?><?php echo $filaTemporal->id_can;?>" onclick="return confirm('¿Estas seguro de editar el registro seleccionado?');" title="Editar Candidato" style="color:blue;">
+              <i class="glyphicon glyphicon-pencil"></i>Editar
             </a>
             &nbsp; &nbsp; &nbsp;
             <a href="<?php echo site_url(); ?>/candidatos/eliminar/<?php echo $filaTemporal->id_can; ?>" onclick="return confirm('¿Estas seguro de eliminar el registro seleccionado?');" title="Eliminar Candidato" style="color:red;">
-              <i class="glyphicon glyphicon-trash"></i>
+              <i class="glyphicon glyphicon-trash"></i>Eliminar
             </a>
           </td>
         </tr>
